@@ -23,7 +23,7 @@ const cleanGallery = () => {
 
 cleanGallery();
 //Fonction pour créer les cartes de la galerie et leur différentes caractéristiques
-function createCard(liste) {
+function createCard(article) {
   
     const figureElement = document.createElement("figure");
     const imageElement = document.createElement("img");
@@ -33,7 +33,7 @@ function createCard(liste) {
     const figcaptionElement = document.createElement("figcaption");
     figcaptionElement.innerText = article.title;
     figureElement.setAttribute("data-id", article.categoryId);
-
+    figureElement.setAttribute("id", article.id);
     //DOM pour rattacher les éléments au html
     figureElement.appendChild(imageElement);
     figureElement.appendChild(figcaptionElement);
@@ -322,6 +322,7 @@ validButton.addEventListener("click", (e) => {
 
 const gallery = document.querySelector(".modale-gallery");
 gallery.addEventListener("click", (e) => {
+  e.preventDefault();
   if (e.target.classList.contains("fa-trash")) {
     const figure = e.target.closest("figure");
     const dataId = figure.getAttribute("data-id");
@@ -343,14 +344,23 @@ function confirmDelete(figure, dataId) {
     confirmYes.removeEventListener("click", confirmYesClick);
     confirmDelete.style.display = "none";
   }
-  function confirmYesClick() {
+  function confirmYesClick(e) {
+    e.preventDefault();
     confirmNo.removeEventListener("click", confirmNoClick);
     confirmYes.removeEventListener("click", confirmYesClick);
-    confirmDelete.style.display = "none";
     deleteImage(dataId);
-    figure.remove();
+    confirmDelete.style.display = "none";
+    cons
   }
 }
+
+//DELETEONE CARD
+
+function deleteOneCard(id) {
+  const CardToDelete=document.getElementById(id);
+  CardToDelete.remove()
+}
+
 
 function deleteImage(id) {
   fetch(`http://localhost:5678/api/works/${id}`, {
@@ -358,7 +368,7 @@ function deleteImage(id) {
     headers: { Authorization: `Bearer ${token}` },
   }).then((response) => {
     if (response.ok) {
-      dynamicCard();
+      deleteOneCard(id)
     } else {
       alert("Erreur lors de la suppression de l'image");
     }

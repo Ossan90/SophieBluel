@@ -47,18 +47,21 @@ nav li img{
 	margin-right: 30px;
 }
 
-#modifier h2{display: flex;
-justify-content: center;
-align-items: center;
+#modifier h2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
- #log{ padding-left: 5px;
-color:black;
-font-family: Work Sans;
-font-size: 16px;
-font-weight: 400;
-line-height: 19px;
-text-align: center;
+ #log{
+	
+	padding-left: 5px;
+	color:black;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	text-align: center;
 }
 
 #filtre-liste {
@@ -76,7 +79,7 @@ text-align: center;
 button {
 	font-family: 'Syne';
 	font-weight: 700;
-	font-size: 16px;
+	font-size: 1.2em;
 	color: #1D6154;
 	padding: 0px 15px;
 	min-width: 100px;
@@ -117,7 +120,7 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 16px;
+	font-size: 1.2em;
 	height: 100%;
 	gap: 5px;
 }
@@ -272,7 +275,7 @@ a {
 }
 
 .modale-gallery img {
-	width: 100%;
+	width: 200%;
 	height: 110px;
 	object-fit: cover;
 }
@@ -499,7 +502,6 @@ nav ul {
 }
 nav li {
   padding: 0 10px;
-  font-size: 1.2em;
 }
 
 li:hover {
